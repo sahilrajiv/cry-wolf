@@ -21,9 +21,6 @@ app.add_middleware(
 )
 
 
-
-load_dotenv()
-
 #create prompt for gemini
 
 llm_prompt = '''
@@ -275,9 +272,7 @@ def generate_llm_response(cleaned_text):
     return(display)
 
 
-gemini_api_key = os.getenv("GOOGLE_API_KEY")
-gemini_api_key
-
+gemini_api_key = os.getenv("GEMINI_API_KEY") or st.secrets.get("GEMINI_API_KEY")
 
 class TextInput(BaseModel):
     text: str
